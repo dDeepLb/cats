@@ -84,13 +84,14 @@ function init() {
             Tag: "tlang",
             Action: (targetLang) => {
                 if (targetLang) {
-                    if (["af","ay","sq","de","am","ar","hy","as","az","bm","bn","bho","be","my","bs","bg","km","kn","ca","ceb","cs","ny","zh-CN","zh-TW","si","ko","co","ht","hr","da","dv","doi","sk","sl","es","eo","et","eu","ee","fi","fr","fy","gd","cy","gl","ka","el","gn","gu","ha","haw","iw","hi","hmn","hu","ig","ilo","id","en","ga","is","it","ja","jw","kk","rw","ky","gom","kri","ku","ckb","lo","la","lv","ln","lt","lg","lb","mk","mai","ml","ms","mg","mt","mi","mr","mni-Mtei","lus","mn","nl","ne","no","or","om","pa","ps","fa","pl","pt","qu","ro","ru","sm","sa","nso","sr","st","sn","sd","so","sw","sv","su","tl","th","ta","tt","tg","te","ti","ts","tr","tk","ak","uk","ug","ur","uz","vi","xh","yi","yo","zu"].includes(targetLang)) {
+                    if (["af","ay","sq","de","am","ar","hy","as","az","bm","bn","bho","be","my","bs","bg","km","kn","ca","ceb","cs","ny","zh-cn","zh-tw","si","ko","co","ht","hr","da","dv","doi","sk","sl","es","eo","et","eu","ee","fi","fr","fy","gd","cy","gl","ka","el","gn","gu","ha","haw","iw","hi","hmn","hu","ig","ilo","id","en","ga","is","it","ja","jw","kk","rw","ky","gom","kri","ku","ckb","lo","la","lv","ln","lt","lg","lb","mk","mai","ml","ms","mg","mt","mi","mr","mni-mtei","lus","mn","nl","ne","no","or","om","pa","ps","fa","pl","pt","qu","ro","ru","sm","sa","nso","sr","st","sn","sd","so","sw","sv","su","tl","th","ta","tt","tg","te","ti","ts","tr","tk","ak","uk","ug","ur","uz","vi","xh","yi","yo","zu"].includes(targetLang)) {
                         Player.OnlineSettings.CATS.targetLang = targetLang;
                         ServerAccountUpdate.QueueData({
                             OnlineSettings: Player.OnlineSettings
                         });
+                        ChatRoomSendLocal(`Target language set to ${targetLang}`, 3000);
                     } else {
-                        ChatRoomSendLocal("Target language is wrong.", 10000);
+                        ChatRoomSendLocal(`Target language ${targetLang} is not available.`, 10000);
                         ChatRoomSendLocal("Supported languages: af,ay,sq,de,am,ar,hy,as,az,bm,bn,bho,be,my,bs,bg,km,kn,ca,ceb,cs,ny,zh-CN,zh-TW,si,ko,co,ht,hr,da,dv,doi,sk,sl,es,eo,et,eu,ee,fi,fr,fy,gd,cy,gl,ka,el,gn,gu,ha,haw,iw,hi,hmn,hu,ig,ilo,id,en,ga,is,it,ja,jw,kk,rw,ky,gom,kri,ku,ckb,lo,la,lv,ln,lt,lg,lb,mk,mai,ml,ms,mg,mt,mi,mr,mni-Mtei,lus,mn,nl,ne,no,or,om,pa,ps,fa,pl,pt,qu,ro,ru,sm,sa,nso,sr,st,sn,sd,so,sw,sv,su,tl,th,ta,tt,tg,te,ti,ts,tr,tk,ak,uk,ug,ur,uz,vi,xh,yi,yo,zu", 10000);
                     }
                 } else {
