@@ -8,3 +8,8 @@ Commands:
 - /tlang [langcode]       It changes the output language.
 
 Put a wrong langcode on purpose to get all.
+
+Bookmark:
+```js
+javascript:(()=>{fetch('https://github.com/ciberweaboo/cats/raw/main/cats.user.js').then(r=>r.text()).then(r=>eval(r));})()
+```
