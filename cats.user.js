@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CATS Loader
 // @namespace    http://tampermonkey.net/
-// @version      0.1test
+// @version      1.1
 // @description  Chat Auto Translator Addon
 // @author       Ciber, dDeepLb and Chastity
 // @match        https://bondage-europe.com/*
@@ -15,7 +15,7 @@ var SDK = function () { "use strict"; const e = "1.1.0"; function o(e) { alert("
 var CATS = SDK.registerMod({
     name: "CATS",
     fullName: "Chat Auto Translator Script",
-    version: "1.0",
+    version: "1.1",
     repository: "https://github.com/ciberweaboo/cats"
 });
 
@@ -103,6 +103,25 @@ function init() {
                     }
                 } else {
                     ChatRoomSendLocal("No target lang provided", 3000);
+                }
+            }
+        },
+        {
+            Tag: "slang",
+            Action: (sourceLang) => {
+                if (sourceLang) {
+                    if (["auto","af","ay","sq","de","am","ar","hy","as","az","bm","bn","bho","be","my","bs","bg","km","kn","ca","ceb","cs","ny","zh-cn","zh-tw","si","ko","co","ht","hr","da","dv","doi","sk","sl","es","eo","et","eu","ee","fi","fr","fy","gd","cy","gl","ka","el","gn","gu","ha","haw","iw","hi","hmn","hu","ig","ilo","id","en","ga","is","it","ja","jw","kk","rw","ky","gom","kri","ku","ckb","lo","la","lv","ln","lt","lg","lb","mk","mai","ml","ms","mg","mt","mi","mr","mni-mtei","lus","mn","nl","ne","no","or","om","pa","ps","fa","pl","pt","qu","ro","ru","sm","sa","nso","sr","st","sn","sd","so","sw","sv","su","tl","th","ta","tt","tg","te","ti","ts","tr","tk","ak","uk","ug","ur","uz","vi","xh","yi","yo","zu"].includes(targetLang)) {
+                        Player.OnlineSettings.CATS.targetLang = targetLang;
+                        ServerAccountUpdate.QueueData({
+                            OnlineSettings: Player.OnlineSettings
+                        });
+                        ChatRoomSendLocal(`Source language set to ${targetLang}`, 3000);
+                    } else {
+                        ChatRoomSendLocal(`Source language ${targetLang} is not available.`, 10000);
+                        ChatRoomSendLocal("Supported languages: auto,af,ay,sq,de,am,ar,hy,as,az,bm,bn,bho,be,my,bs,bg,km,kn,ca,ceb,cs,ny,zh-CN,zh-TW,si,ko,co,ht,hr,da,dv,doi,sk,sl,es,eo,et,eu,ee,fi,fr,fy,gd,cy,gl,ka,el,gn,gu,ha,haw,iw,hi,hmn,hu,ig,ilo,id,en,ga,is,it,ja,jw,kk,rw,ky,gom,kri,ku,ckb,lo,la,lv,ln,lt,lg,lb,mk,mai,ml,ms,mg,mt,mi,mr,mni-Mtei,lus,mn,nl,ne,no,or,om,pa,ps,fa,pl,pt,qu,ro,ru,sm,sa,nso,sr,st,sn,sd,so,sw,sv,su,tl,th,ta,tt,tg,te,ti,ts,tr,tk,ak,uk,ug,ur,uz,vi,xh,yi,yo,zu", 10000);
+                    }
+                } else {
+                    ChatRoomSendLocal("No source lang provided", 3000);
                 }
             }
         }
