@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CATS Loader
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.1.1
 // @description  Chat Auto Translator Addon
 // @author       Ciber, dDeepLb and Chastity
 // @match        https://bondage-europe.com/*
@@ -15,7 +15,7 @@ var SDK = function () { "use strict"; const e = "1.1.0"; function o(e) { alert("
 var CATS = SDK.registerMod({
     name: "CATS",
     fullName: "Chat Auto Translator Script",
-    version: "1.1",
+    version: "1.1.1",
     repository: "https://github.com/ciberweaboo/cats"
 });
 
@@ -85,7 +85,8 @@ function init() {
                     });
                     ChatRoomSendLocal("Chat Translator is now OFF", 3000);
                 }
-            }
+            },
+            Description: "Toggle CATS on or off"
         },
         {
             Tag: "tlang",
@@ -104,7 +105,8 @@ function init() {
                 } else {
                     ChatRoomSendLocal("No target lang provided", 3000);
                 }
-            }
+            },
+            Description: "Change the target language of CATS."
         },
         {
             Tag: "slang",
@@ -123,7 +125,8 @@ function init() {
                 } else {
                     ChatRoomSendLocal("No source lang provided", 3000);
                 }
-            }
+            },
+            Description: "Change the source language of CATS."
         }
     ])
 }
